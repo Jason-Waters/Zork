@@ -33,17 +33,20 @@ namespace Zork
                     default:
                         outputString = "Unknown Command";
                         break;
-
                 }
-
-                
-                
-
 
                 Console.WriteLine(outputString);
             }
         }
 
         private static Commands ToCommand(string commandString) => Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
+
+        private static readonly string[] Rooms = { "Forest", "West of House", "Behind House", "Clearing", "Canyon view" };
+
+        private static Boolean Move(Commands Direction)
+        {
+            //if (direction )  
+            return true;
+        }
     }
 }
