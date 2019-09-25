@@ -6,12 +6,12 @@ namespace Zork
     class Program
     {
 
-        private static int Location = 1;
+        private static (int Row, int Column) Location = (1,1);
         private static string CurrentRoom
         {
             get
             {
-                return Rooms[Location];
+                return Rooms[Location.Row, Location.Column];
             }
         }
         static void Main(string[] args)
@@ -60,7 +60,11 @@ namespace Zork
 
         private static Commands ToCommand(string commandString) => Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
         private static bool IsDirection(Commands command) => Directions.Contains(command);
-        private static readonly string[] Rooms = { "Forest", "West of House", "Behind House", "Clearing", "Canyon view" };
+        private static readonly string[,] Rooms = {
+            { "Rock Trail", "South of House", "Canyon View" },
+            { "Forest", "West of House", "Behind House" },
+            { "Dense Woods", "North of House", "Clearing" }
+        };
 
         private static Boolean Move(Commands command)
         {
@@ -68,24 +72,27 @@ namespace Zork
             bool isValidMove = true;
             switch (command)
             {
-                //case Commands.NORTH: //when Location.Row > 0:
-                //Location.Row--;
-                //break;
-                //case Commands.SOUTH: //when Location.Row < Rooms.GetLength(0) - 1:
-                //Location.Row++;
-                //break;
-                case Commands.EAST when Location < Rooms.GetLength(0) - 1:
-                    Location++;
-                    break;
-                case Commands.WEST when Location > 0://when Location.Column > 0:
-                    Location--;
-                    break;
+                case Commands.NORTH when Location.Row > 0:
+                Location.Row--;
+                break;
+
+                case Commands.SOUTH when Location.Row < Rooms.GetLength(0) - 1:
+                Location.Row++;
+                break;
+
+                case Commands.EAST when Location.Column < Rooms.GetLength(1) - 1:
+                Location.Column++;
+                break;
+
+                case Commands.WEST when Location.Column > 0:
+                Location.Column--;
+                break;
+
                 default:
                     isValidMove = false;
                     break;
             }
 
-            //outputString = $"You moved {command}.";
             return isValidMove;
         }
 
