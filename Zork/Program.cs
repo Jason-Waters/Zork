@@ -21,14 +21,14 @@ namespace Zork
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
-                Console.Write("> ");
+                Console.Write("\n> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
                 string outputString = "";
                 switch (command)
                 {
                     case Commands.LOOK:
-                        outputString = "This is an open field west of a white house, with a boarded front door. /nA rubber mat saying 'Welcome to Zork!' lies by the door.";
+                        //outputString = "This is an open field west of a white house, with a boarded front door. \n A rubber mat saying 'Welcome to Zork!' lies by the door.\n";
                         break;
                     case Commands.NORTH:
                     case Commands.SOUTH:
@@ -49,11 +49,12 @@ namespace Zork
                         break;
 
                     default:
-                        outputString = "Unknown Command";
+                        outputString = "Unknown Command\n";
                         break;
                 }
 
                 Console.WriteLine(outputString);
+                Console.Write(CurrentRoom);
             }
         }
 
@@ -76,7 +77,7 @@ namespace Zork
                 case Commands.EAST when Location < Rooms.GetLength(0) - 1:
                     Location++;
                     break;
-                case Commands.WEST when Location < Rooms.GetLength(0) - 1://when Location.Column > 0:
+                case Commands.WEST when Location > 0://when Location.Column > 0:
                     Location--;
                     break;
                 default:
