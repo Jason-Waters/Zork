@@ -17,6 +17,8 @@ namespace Zork
 
         static void Main(string[] args)
         {
+            Game.Load();
+
             Console.WriteLine("Welcome to Zork!");
             const string defaultRoomsFilename = "Rooms.json";
             string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFilename] : defaultRoomsFilename);
