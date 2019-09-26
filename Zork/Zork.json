@@ -26,8 +26,6 @@
 					"East": "Clearing"
 				}
 			},
-			],
-			[
 			{
 				"Name": "Forest 3",
 				"Description": "This is a dimly lit forest, with large trees all around. To the East, there appears to be sunlight.",
@@ -51,11 +49,9 @@
 				"Neighbors": {
 					"North": "North of House",
 					"South": "South of House",
-					"East": "Clearing",
+					"East": "Clearing"
 				}
 			},
-			],
-			[
 			{
 				"Name": "Peter Peninsula",
 				"Description": "Ooh secret area with no way in.",

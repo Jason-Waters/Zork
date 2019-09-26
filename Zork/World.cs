@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Zork
 {
-    class World
+    public class World
     {
         public HashSet<Room> Rooms { get; set; }
 

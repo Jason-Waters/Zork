@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Zork
 {
-    class Room : IEquatable<Room>
+    public class Room : IEquatable<Room>
     {
         [JsonProperty(Order =1)]
         public string Name { get; private set; }
