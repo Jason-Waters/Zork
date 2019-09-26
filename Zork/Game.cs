@@ -10,7 +10,11 @@ namespace Zork
 {
     public class Game
     {
-        public World World { get; }
+        public World World { get; private set; }
+
+        [JsonIgnore]
+        public Player Player 
+        public
 
         public static Game Load(string filename)
         {
@@ -19,3 +23,5 @@ namespace Zork
         }
     }
 }
+
+
