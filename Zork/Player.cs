@@ -17,7 +17,7 @@ namespace Zork
         {
             get
             {
-                returnlocation?.name;
+                return Location?.Name;
             }
             set
             {
@@ -33,13 +33,13 @@ namespace Zork
 
         public bool Move(Directions direction)
         {
-            bool isValidmove = Location.Neighbors.TryGetValue(direction, out Room destination);
+            bool isValidMove = Location.Neighbors.TryGetValue(direction, out Room destination);
             if (isValidMove)
             {
                 Location = destination;
             }
 
-            return isValidmove;
+            return isValidMove;
         }
     }
 }

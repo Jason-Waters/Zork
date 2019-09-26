@@ -12,7 +12,9 @@ namespace Zork
         public string Name { get; private set; }
         [JsonProperty(Order = 2)]
         public string Description { get; private set; }
+
         [JsonProperty(PropertyName = "Neighbors", Order = 3)]
+        private Dictionary<Directions, string> NeighborNames { get; set; }
 
         [JsonIgnore]
         public IReadOnlyDictionary<Directions, Room> Neighbors { get; private set; }
@@ -38,6 +40,6 @@ namespace Zork
         public override int GetHashCode() => Name.GetHashCode();
         public override string ToString() => Name;
 
-        public void UpdateNeighbors(World world) => Neighbors = (from entry in NeighborNames let room = world.RoomsByName.GetValueOrDefault(entry.value) where room != null select (Direction: entry.key, Room: room)).ToDictionary(pair => pair.Direction, pair => pair.Room);
+        public void UpdateNeighbors(World world) => Neighbors = (from entry in NeighborNames let room = world.RoomsByName.GetValueOrDefault(entry.Value) where room != null select (Direction: entry.Key, Room: room)).ToDictionary(pair => pair.Direction, pair => pair.Room);
     }
 }
